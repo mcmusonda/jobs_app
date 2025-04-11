@@ -1,6 +1,5 @@
-@extends('layout')
-
-@section('content')
+<x-layout>  
+    <x-slot name="title">Add a Job Listing</x-slot>
     <h1>Add a job</h1>
     <form action="/jobs" method="post">
         @csrf
@@ -9,4 +8,4 @@
         <button type="submit">Submit</button>
         {{-- <textarea name="description" id="description" placeholder="Enter job description"></textarea> --}}
     </form>
-@endsection
+</x-layout>

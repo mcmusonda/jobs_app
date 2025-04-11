@@ -1,6 +1,4 @@
-@extends('layout')
-
-@section('content')
+<x-layout>
     <h1>{{ $title }}</h1>
 
     <ul>
@@ -11,4 +9,4 @@
             <li style="color: #f00;">There are no jobs available at the moment.</li>
         @endforelse
     </ul>
-@endsection
+</x-layout>

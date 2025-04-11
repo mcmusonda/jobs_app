@@ -60,7 +60,10 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->input('title');
+        $description = $request->input('description');
+
+        return "The position is $title which involve $description";
     }
 
     /**
@@ -68,7 +71,7 @@ class JobController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return "Showing Job #: $id";
     }
 
     /**

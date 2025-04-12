@@ -97,4 +97,9 @@ class JobController extends Controller
     {
         //
     }
+
+    public function saved()
+    {
+        return view('jobs.saved');
+    }
 }

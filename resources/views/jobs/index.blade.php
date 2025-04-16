@@ -1,10 +1,8 @@
 <x-layout>
-    <h1>{{ $title }}</h1>
 
     <ul>
         @forelse($jobs as $job)
-            <li>{{ $job['job_title'] }}</li>
-            <li>{{ Str::limit($job['description'], 40)}}</li>
+            <li><a href="{{ route('jobs.show', $job->id)}}">{{ $job->title }}</a> - {{ Str::limit($job->description, 60)}}</li>
         @empty 
             <li style="color: #f00;">There are no jobs available at the moment.</li>
         @endforelse

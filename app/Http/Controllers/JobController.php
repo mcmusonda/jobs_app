@@ -30,9 +30,12 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        $job = [];
-        $job['title'] = $request->input('title');
-        $job['description'] = $request->input('description');
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+        ]);
+        $job['title'] = $validatedData['title'];
+        $job['description'] = $validatedData['description'];
 
         Job::create($job);
 

@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::table('job_listings', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->after('id');
             $table->integer('salary');
-            $table->string('tag')->nullable();
+            $table->string('tags')->nullable();
             $table->enum('job_type', ['Full-Time', 'Part-Time','Contract', 'Temporary', 'Internship', 'Volunteer', 'On-Call'])->default('Full-Time');
             $table->boolean('remote')->default(false);
             $table->string('requirements')->nullable();
@@ -25,11 +25,11 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city');
             $table->string('state');
-            $table->string('zipcode')->nullable();
+            $table->string('zip_code')->nullable();
             $table->string('contact_email');
             $table->string('contact_phone')->nullable();
             $table->string('company_name');
-            $table->string('company_description')->nullable();
+            $table->text('company_description')->nullable();
             $table->string('company_logo')->nullable();
             $table->string('company_website')->nullable();
 

@@ -7,9 +7,8 @@ use App\Models\Job;
 
 class JobController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // @desc Show index view
+    // @rout GET /jobs
     public function index()
     {
         $jobs = Job::all();
@@ -30,16 +29,37 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'salary' => 'required|integer',
+            'requirements' => 'nullable|string',
+            'benefits' => 'nullable|string',
+            'tags' => 'nullable|string',
+            'job_type' => 'required|string',
+            'remote' => 'required|boolean',
+            'address' => 'nullable|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zip_code' => 'nullable|string',
+            'company_name' => 'required|string',
+            'company_description' => 'nullable|string',
+            'company_logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'company_website' => 'nullable|url',
+            'contact_email' => 'required|string',
+            'contact_phone' => 'nullable|string'
         ]);
-        $job['title'] = $validatedData['title'];
-        $job['description'] = $validatedData['description'];
 
-        Job::create($job);
 
-        return redirect()->route('jobs.index');
+        // Hard coded user ID
+        $validatedData['user_id'] = 1;
+
+         dd($validatedData);
+
+        Job::create($validatedData);
+
+        return redirect()->route('jobs.index')->with('success', 'Job listing created successfully!');
     }
 
     /**
